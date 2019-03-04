@@ -1,0 +1,265 @@
+@import 'media.scss';
+
+$off_white:#1a1818;
+$light_grey:#A39D9E;
+*{
+  box-sizing:border-box;
+}
+
+body{
+  background-color: $off_white;
+}
+
+/* CARDVIEW */
+
+.card-view{
+   border-radius: 3px; 
+   overflow: hidden; 
+   box-shadow: 1px 1px 4px rgba(0,0,0,.10);  background: #fff; }
+
+
+
+.light{
+  background-color: #fff;
+}
+// .dark{
+//   margin-left: 65px;
+// }
+
+.calendar{
+    width: 100%;
+    // border: #1a1818 1px solid;
+  box-shadow: 0px 0px 35px -16px rgba(0,0,0,0.75);
+  font-family: 'Roboto', sans-serif;
+  padding: 20px 30px;
+  color:#363b41;
+  display: inline-block;
+}
+
+
+.calendar_header{
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  // background-color: #646464
+}
+
+.header_copy{
+  color:$light_grey;
+  font-size:20px;
+}
+.calendar_plan{
+  margin:20px 0 10px;
+ 
+}
+// .cl_plan{
+//   width:100%;
+//   height: 140px;
+//   background: #454545;
+//   // background-image: linear-gradient(-222deg,#c91c39 ,rgb(3, 55, 150) );
+//   box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
+//   padding:30px;
+//   color:#fff;
+// }
+
+// .cl_copy{
+//   font-size:20px;
+//   margin: 20px 0;
+//   display: inline-block;
+// }
+
+// .cl_add{
+//   display: inline-block;
+//   width: 40px;
+//   height:40px;
+//   border-radius:50%;
+//   background-color: #fff;
+//   cursor: pointer;
+//   margin:0 0 0 65px;
+//   color:#c2c2c2;
+//   padding: 11px 13px;
+// }
+.calendar_events{
+  color:$light_grey;
+  background: rgba(233, 230, 231, 0.931)
+}
+.ce_title{
+  font-size:14px;
+}
+
+// .event_item{
+//   margin: 18px 0;
+//   padding:5px;
+// //   cursor: pointer;
+//   &:hover{
+//     background: rgba(19, 19, 207, 0.877);
+//     // background-image: linear-gradient(-222deg, rgb(84, 141, 246), #ffa9b7);
+//     box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
+//     .ei_Dot{
+//       background-color: #fff;
+//     }
+//     .ei_Copy,.ei_Title{
+//       color:#fff;
+//     }
+//   }
+// }
+
+// .ei_Dot,.ei_Title{
+//   display:inline-block;
+// }
+
+// .ei_Dot{
+//   border-radius:50%;
+//   width:10px;
+//   height: 10px;
+//   background-color: $light_grey;
+//   box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
+// }
+// .dot_active{
+//   background-color: #FF8494;
+// }
+
+// .ei_Title{
+//   margin-left:10px;
+//   color:#363b41;
+// }
+
+// .ei_Copy{
+//   font-size:12px;
+//   margin-left:27px;
+// }
+
+// .dark{
+//   background-image: linear-gradient(-222deg, #646464, #454545);
+//   color:#fff;
+//   .header_title,.ei_Title,.ce_title{
+//     color:#fff;
+//   }
+  
+// }
+/*************************************/
+/*targetas de panel*/
+.blog-container {
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
+  font-family: "adelle-sans", sans-serif;
+  font-weight: 100;
+  margin: 1em auto;
+  width: 80%;
+}
+.blog-container a {
+  color: #4d4dff;
+  text-decoration: none;
+  transition: .25s ease;
+  &:hover {
+    border-color: #ff4d4d;
+    color: #ff4d4d;
+  }
+}
+
+
+
+.blog-author,
+.blog-author--no-cover {
+  margin: 0 auto;
+  padding-top: .125rem;
+  width: 80%;
+}
+.blog-author h3::before,
+.blog-author--no-cover h3::before {
+  background: url("https://upload.wikimedia.org/wikipedia/commons/8/84/USAID-Logo.svg");
+  background-size: cover;
+  border-radius: 50%;
+  content: " ";
+  display: inline-block;
+  height: 32px;
+  margin-right: .5rem;
+  position: relative;
+  top: 8px;
+  width: 32px;
+}
+.blog-author h3 {
+  color: #fff;
+  font-weight: 100;
+}
+.blog-author--no-cover h3 {
+  color: lighten(#333, 40%);
+  font-weight: 100;
+}
+
+
+// Blog body
+//-------------------------
+.blog-body {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.blog-title h1 a {
+  color: #333;
+  font-weight: 100;
+}
+.blog-summary p {
+  color: lighten(#333, 10%);
+}
+
+
+
+// Blog footer
+//-------------------------
+.blog-footer {
+  border-top: 1px solid lighten(#333, 70%);
+  margin: 0 auto;
+  padding-bottom: .125rem;
+  width: 80%;
+}
+.blog-footer ul {
+  list-style: none;
+  display: flex;
+  flex: row wrap;
+  justify-content: flex-end;
+  padding-left: 0;
+}
+.blog-footer li:first-child {
+  margin-right: auto;
+}
+.blog-footer li + li {
+  margin-left: .5rem;
+}
+.blog-footer li {
+  color: lighten(#333, 40%);
+  font-size: .75rem;
+  height: 1.5rem;
+  letter-spacing: 1px;
+  line-height: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  white-space: nowrap;
+  & a {
+    color: lighten(#333, 40%);
+  }
+}
+.comments {
+  margin-right: 1rem;
+}
+.published-date {
+  border: 1px solid lighten(#333, 40%);
+  border-radius: 3px;
+  padding: 0 .5rem;
+}
+
+
+// Icons
+//-------------------------
+.icon-star,
+.icon-bubble {
+  fill: lighten(#333, 40%);
+  height:24px;
+  margin-right: .5rem;
+  transition: .25s ease;
+  width: 24px;
+  &:hover {
+    fill: #ff4d4d;
+  }
+}
+

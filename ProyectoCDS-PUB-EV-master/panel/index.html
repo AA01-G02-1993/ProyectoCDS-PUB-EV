@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/css/main.css" />
+    <style>
+        body {
+            padding-top: 3em;
+        }
+        #global {
+            width: 100%;
+            height: 100vh; 
+            /* border: 1px solid #ddd;
+            background: #f1f1f1; */
+            overflow-y: scroll;
+        }
+        #mensajes {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">Logo</a>
+        
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="nav-content">   
+        <ul class="navbar-nav">
+        <li class="nav-item">
+        <a class="nav-link" href="#">Link 1</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Link 2</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#" active>Publicaciones</a>
+        </li>
+        </ul>
+    </nav>
+    <main id="app" class="container-fuid">
+  
+        <div class="calendar light">
+            <div class="calendar_header">
+              <h1 class = "header_title">Panel de administracion </h1>
+              
+              <p class="header_copy">Eventos</p>
+            </div>
+            <!-- fila -->
+            <div class="row">
+                <!-- seccion de formularios  -->
+                    <div class="calendar_plan col-md-6 col-sm-12 card-view">
+                        <!-- <div class="row"  >
+                            <div class="cl_plan col-sm-6 ">
+                                <div class="cl_title">Agregar</div>
+                                <div class="cl_copy">Publicacion</div>
+                                <div class="cl_add">
+                                        <i class="fas fa-plus"></i>
+                                </div>
+                            
+                            </div>
+                            <div class="cl_plan cl_plan_right col-sm-6">
+                                <div class="cl_title">Agregar</div>
+                                <div class="cl_copy">Eventos</div>
+                                <div class="cl_add">
+                    
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                             
+                            </div>
+                        </div> -->
+                        <p class="ce_title">Publicar Noticias </p>
+
+                        <select name="" id="" class="form-control"
+                        v-model="publicacion">
+                            <option :value="1">evento</option>
+                            <option :value="2">noticia</option>
+                        </select> 
+                        <!-- Formulario de eventos -->
+                        <template v-if="publicacion == 1">
+                                <form action="">
+                                        <legend>Formulario de Evento</legend>
+                                        <div class="form-group">
+                                            <label>Fecha a realizar el evento:</label>
+                                            <input type="date" class="form-control" 
+                                                    id="" placeholder="fecha">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Lugar del evento:</label>
+                                            <input type="" class="form-control" id="" placeholder="titulo del evento  ">                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Titulo</label>
+                                            <input type="text" class="form-control" 
+                                                    v-model="newEvento.titulo" id="" placeholder="titulo del evento  ">                            
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="">
+                                            <label class="custom-file-label" for="">Foto de evento:</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Contenido:</label>
+                                            <textarea class="form-control" id="" rows="3"></textarea>
+                                        </div>
+                                        <button @click="addEvento" v-model="">Agregar</button>
+                                    </form>
+                        </template>
+                         <!-- Formulario de noticia -->
+                       <template  v-else>
+                            <form >
+                                    <legend>Formulario de Noticia</legend>
+                                    <div class="form-group">
+                                        <label>Autor</label>
+                                        <input type="text" class="form-control" id="" placeholder="Autor ">
+                                       
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fecha</label>
+                                        <input type="date" class="form-control" id="" placeholder="fecha">
+                                    </div>
+                                    <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="">
+                                            <label class="custom-file-label" for=""> Introduce foto</label>
+                                    </div>
+                                    <div class="form-group">
+                                            <label>Titulo</label>
+                                            <input type="text" class="form-control" id="" placeholder="titulo de la publicacion ">
+                                           
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Contenido</label>
+                                        <textarea class="form-control" id="" rows="3"></textarea>
+                                    </div>
+                                 
+                              
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                       </template>
+                   
+                       
+                    </div>
+                    <!-- tablas de datos -->
+                    <div class="calendar_events  col-md-6 card-view col-sm-12">
+                        <!-- tablas de Eventos -->
+                        <template v-if="publicacion == 1">
+                            <p class="ce_title">Modificacion de eventos </p>
+                    
+                            <div id="global">
+                                <div id="mensajes" class="row">
+                    
+                                    <div class="blog-container col-md-12 " v-for="evento in eventos">
+                    
+                                        <div class="blog-header">
+                                            <div class="blog-author--no-cover">
+                                                <h3>Evento</h3>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="blog-body">
+                                            <div class="blog-title">
+                                                <h1>
+                                                    <a href="#" v-text="evento.titulo"> </a>
+                                                </h1>
+                                            </div>
+                                            <div class="blog-summary">
+                                                <p>Here is an example of a post without a cover image. You don't always have to have a cover image.
+                                                    In fact, leaving them out from time to time and disrupt the predictive flow and make the
+                                                    overall design more interesting. Something to think about.</p>
+                                            </div>
+                    
+                                        </div>
+                    
+                                        <div class="blog-footer">
+                                            <ul>
+                                                <li class="published-date">12 days ago</li>
+                                                <li class="shares">
+                                                    <a href="#">
+                                                        <i class="far fa-eye"></i>
+                                                        <span class="numero">vista</span>
+                                                    </a>
+                                                </li>
+                                                <li class="comments">
+                                                    <a href="#">
+                                                        <i class="fas fa-edit"></i>
+                                                        <span class="numero">Editar</span>
+                                                    </a>
+                                                </li>
+                                                <li class="shares">
+                                                    <a href="#">
+                                                        <i class="far fa-trash-alt"></i>
+                                                        <span class="numero">Delete</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                    
+                                    </div>
+                    
+                                    <!-- targeta -->
+                    
+                                </div>
+                            </div>
+                        </template>
+                       <!-- tablas de Noticias -->
+                        <template v-else>
+                            <p class="ce_title">Modificacion de noticias </p>
+                    
+                            <div id="global">
+                                <div id="mensajes" class="row">
+                    
+                                    <div class="blog-container col-md-12 " v-for="evento in eventos">
+                    
+                                        <div class="blog-header">
+                                            <div class="blog-author--no-cover">
+                                                <h3>Noticia</h3>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="blog-body">
+                                            <div class="blog-title">
+                                                <h1>
+                                                    <a href="#" v-text="evento.titulo"> </a>
+                                                </h1>
+                                            </div>
+                                            <div class="blog-summary">
+                                                <p>Here is an example of a post without a cover image. You don't always have to have a cover image.
+                                                    In fact, leaving them out from time to time and disrupt the predictive flow and make the
+                                                    overall design more interesting. Something to think about.</p>
+                                            </div>
+                    
+                                        </div>
+                    
+                                        <div class="blog-footer">
+                                            <ul>
+                                                <li class="published-date">12 days ago</li>
+                                                <li class="shares">
+                                                    <a href="#">
+                                                        <i class="far fa-eye"></i>
+                                                        <span class="numero">vista</span>
+                                                    </a>
+                                                </li>
+                                                <li class="comments">
+                                                    <a href="#">
+                                                        <i class="fas fa-edit"></i>
+                                                        <span class="numero">Editar</span>
+                                                    </a>
+                                                </li>
+                                                <li class="shares">
+                                                    <a href="#">
+                                                        <i class="far fa-trash-alt"></i>
+                                                        <span class="numero">Delete</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                    
+                                    </div>
+                    
+                                    <!-- targeta -->
+                    
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+            </div>
+            <!-- <code>
+                    <pre>{{$data}} </pre>
+                   
+                </code> -->
+          </div>
+      
+        </main>
+    <!-- Footer -->
+    <section id="footer">
+        <div class="container">
+            <div class="row text-center text-xs-center text-sm-left text-md-left">
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <h5>Quick links</h5>
+                    <ul class="list-unstyled quick-links">
+                        <li>
+                            <a href="javascript:void();">
+                                <i class="fa fa-angle-double-right"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void();">
+                                <i class="fa fa-angle-double-right"></i>About</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <h5>Quick links</h5>
+                    <ul class="list-unstyled quick-links">
+                        <li>
+                            <a href="javascript:void();">
+                                <i class="fa fa-angle-double-right"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void();">
+                                <i class="fa fa-angle-double-right"></i>About</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <h5>Quick links</h5>
+                    <ul class="list-unstyled quick-links">
+                        <li>
+                            <a href="javascript:void();">
+                                <i class="fa fa-angle-double-right"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void();">
+                                <i class="fa fa-angle-double-right"></i>About</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                    <ul class="list-unstyled list-inline social text-center">
+                        <li class="list-inline-item">
+                            <a href="javascript:void();">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="javascript:void();">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                </hr>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                    <p>
+                        <u>
+                            <a href="https://www.nationaltransaction.com/">National Transaction Corporation</a>
+                        </u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis,
+                        MN]
+                    </p>
+                    <p class="h6">&copy All right Reversed.
+                        <a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Sunlimetech</a>
+                    </p>
+                </div>
+                </hr>
+            </div>
+        </div>
+    </section>
+    <!-- ./Footer -->
+
+
+
+        <script src="js/vue.js"></script>
+        <script src="js/main.js"></script>
+
+</body>
+</html>
