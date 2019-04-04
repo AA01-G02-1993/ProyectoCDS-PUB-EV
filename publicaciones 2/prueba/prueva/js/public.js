@@ -73,8 +73,10 @@ const app = new Vue({
                 // insertar  el json imgs al arreglo imagenes
                 insertar.push(imgPu);
 
+
             }
             reader.readAsDataURL(file);
+
             // console.log(file);
 
         },
@@ -84,8 +86,11 @@ const app = new Vue({
             axios.get('http://192.168.32.106/Publicaciones_eventos2/apiRest/public/api/publicaciones/lista')
                 .then(response => {
                     //asignarle al arreglo publicaciones la respuesta donde obtenemos todas las publicaciones
-                    this.publicaciones = response.data.public
-
+                    
+                    var ordenar = response.data.public
+                    ordenar.sort((a, b) => b.id - a.id);
+                    console.log(ordenar);
+                    this.publicaciones = ordenar
                 })
                 .catch(error => {
                     console.log(error);
@@ -121,7 +126,7 @@ const app = new Vue({
                     console.log(error);
                     alert(error)
                 })
-         
+
         },
         /////////////////////////////////////    eliminar Publicacion   ///////////////////////////////////////////////
 
@@ -142,7 +147,7 @@ const app = new Vue({
                         console.log(error);
                         alert(error)
                     })
-          
+
             } else {
 
             }
@@ -152,10 +157,19 @@ const app = new Vue({
 
         //////////////////////////////////////////////    Actualizar Publicacion   /////////////////////////////////////////////////////////////
         actualizar: function (item) {
+
             // asignandole a el arreglo items  el arreglo item que obtenemos al pulsar el boton actualizar
             // console.log(item);
             // this.items='';
             this.items = item
+            for (let i = 0; i < insertar.length; i++) {
+                insertar.splice(i, 1);
+
+            }
+            for (let i = 0; i < eliminar.length; i++) {
+                eliminar.splice(i, 1);
+
+            }
             for (let i = 0; i < imagenes.length; i++) {
                 imagenes[i].img = null;
                 $('.delete').remove();
@@ -205,15 +219,15 @@ const app = new Vue({
                     break;
                 }
             }
-             //for para comparar las images para poder eliminarlas de el arreglo insertar con splice 
-             for (var i = 0; i < insertar.length; i++) {
+            //for para comparar las images para poder eliminarlas de el arreglo insertar con splice 
+            for (var i = 0; i < insertar.length; i++) {
                 if (insertar[i].img == img) {
                     insertar.splice(i, 1);
                     break;
                 }
             }
 
-            
+
         },
         /////////////////////////////////////////////////////////////////////////
 
@@ -236,7 +250,7 @@ const app = new Vue({
 
                     console.log(response);
                     this.mostrar()
-                  
+
 
                 })
                 .catch(error => {

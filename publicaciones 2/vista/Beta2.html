@@ -51,7 +51,9 @@
 
                                 <div class="blog-details-top">
                                     <div class="blog-details-img">
-                                        <img alt="" v-bind:src="publicacion.img">
+                                        <a >
+                                            <img id="imagenPricipal" alt="">
+                                        </a>
                                     </div>
                                     <div class="blog-details-content">
                                         <div class="blog-meta-2">
@@ -66,23 +68,29 @@
                                         </div>
                                         <h3>{{publicacion.titulo}}</h3>
 
-                                        <p>{{publicacion.contenido}}</p>
+                                        <div  v-for="item in parrafos ">
+                                            <p class="my-3">{{item}}</p>
+                                        </div>
 
 
                                     </div>
                                 </div>
                                 <div class="dec-img-wrapper">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="dec-img mb-50">
-                                                <img alt="" src="assets/img/blog/Fotoc1.jpg">
+                                        <div class="col-md-6" v-for="imagenes in imagenesSecundarias " >
+                                            <div class="dec-img mb-50" >
+                                                <!-- <img alt="" src="assets/img/blog/Fotoc1.jpg"> -->
+                                                <img v-bind:src="imagenes" alt="">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <!-- <a v-for="imagenes in publicacion.img.slice(0,1)">
+                                            <img v-bind:src="imagenes.img" alt="">
+                                        </a> -->
+                                        <!-- <div class="col-md-6">
                                             <div class="dec-img mb-50">
                                                 <img alt="" src="assets/img/blog/Fundacion-JBorja-1.jpg">
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                 </div>

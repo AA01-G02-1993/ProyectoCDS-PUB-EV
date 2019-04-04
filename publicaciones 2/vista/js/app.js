@@ -61,9 +61,13 @@ Vue.component('public', {
     mounted() {
         axios.get('http://192.168.32.106/Publicaciones_eventos2/apiRest/public/api/publicaciones/lista')
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 this.publicaciones = res.data.public
-                console.log(this.publicaciones)
+                // console.log(this.publicaciones)
+                var ordenar =res.data.public
+                ordenar.sort((a, b) => b.id - a.id );
+                console.log(ordenar);
+                
             })
     },
     data() {
@@ -84,29 +88,30 @@ Vue.component('recientes', {
     template: `
     <div>
     <div class="sidebar-project-wrap mt-30" v-for="publicacion in publicaciones.slice(0,4)">
-    <!-- /////////////////////////////////////////////////////////// -->
-    <div class="single-sidebar-blog">
-        <div class="sidebar-blog-img">
-        <a v-for="imagenes in publicacion.img.slice(0,1)">
-            <img v-bind:src="imagenes.img" alt="">
-        </a>
+        <!-- /////////////////////////////////////////////////////////// -->
+        <div class="single-sidebar-blog">
+            <div class="sidebar-blog-img">
+            <a v-for="imagenes in publicacion.img.slice(0,1)">
+                <img v-bind:src="imagenes.img" alt="">
+            </a>
+            </div>
+            <div class="sidebar-blog-content">
+                <span>{{publicacion.titulo.substring(0,20)}}</span>
+                <h4>
+                    <a @click="vermas(publicacion.id)">{{publicacion.contenido.substring(0,20)+" ..."}}</a>
+                </h4>
+            </div>
         </div>
-        <div class="sidebar-blog-content">
-            <span>{{publicacion.titulo.substring(0,20)}}</span>
-            <h4>
-                <a @click="vermas(publicacion.id)">{{publicacion.contenido.substring(0,20)+" ..."}}</a>
-            </h4>
-        </div>
-    </div>
     </div>
 </div>
     `,
     mounted() {
         axios.get('http://192.168.32.106/Publicaciones_eventos2/apiRest/public/api/publicaciones/lista2')
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 this.publicaciones = res.data.public
-                console.log(this.publicaciones)
+              
+                // console.log(this.publicaciones)
             })
     },
     data() {
