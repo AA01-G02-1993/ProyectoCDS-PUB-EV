@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CDS - Minimalist beta </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png"> -->
+
+    <!--=============================================CSS========================================== -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Modernizer JS -->
+    <!-- <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script> -->
+</head>
+
+<body>
+    <section id="app">
+        <!-- posicion -->
+        <div class="breadcrumb-area pt-35 pb-35 bg-gray-3">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="index1.html">Inicio</a>
+                        </li>
+                        <li class="active">Publicaciones</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="Blog-area pt-100 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="mr-20">
+                            <div class="row">
+                                <!--  -->
+
+                                <div class="blog-details-top">
+                                    <div class="blog-details-img">
+                                        <img alt="" v-bind:src="publicacion.img">
+                                    </div>
+                                    <div class="blog-details-content">
+                                        <div class="blog-meta-2">
+                                            <ul>
+                                                <li>{{publicacion.updated_at}}</li>
+                                                <li>
+                                                    <a href="#">{{publicacion.Autor}}
+
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <h3>{{publicacion.titulo}}</h3>
+
+                                        <p>{{publicacion.contenido}}</p>
+
+
+                                    </div>
+                                </div>
+                                <div class="dec-img-wrapper">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="dec-img mb-50">
+                                                <img alt="" src="assets/img/blog/Fotoc1.jpg">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="dec-img mb-50">
+                                                <img alt="" src="assets/img/blog/Fundacion-JBorja-1.jpg">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="tag-share">
+
+                                    <div class="blog-share">
+                                        <span>share :</span>
+                                        <div class="share-social">
+                                            <ul>
+                                                <li>
+                                                    <a class="facebook" href="#">
+                                                        <i class="fab fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="twitter" href="#">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="instagram" href="#">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pro-pagination-style text-center mt-20">
+            <ul>
+                <li>
+                    <a class="prev" href="#">
+                        <i class="fa fa-angle-double-left"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="active" href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a class="next" href="#">
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--=============================================JS========================================== -->
+        <div style="height: 500px;"></div>
+
+    </section>
+
+
+
+    <!--=============================================JS========================================== -->
+
+    <!-- jQuery JS -->
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- Popper JS -->
+    <script src="assets/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Plugins JS -->
+    <script src="assets/js/plugins.js"></script>
+
+    <!-- Main JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+    <script src="js/public.js"></script>
+
+</body>
+
+</html>

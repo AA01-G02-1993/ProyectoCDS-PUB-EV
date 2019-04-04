@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>eventos</title>
+
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <section id="app">
+        <section class="container  mt-4">
+            <!--//////////////////////////////////// modal///////////////////////////////// -->
+
+            <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#agregar">
+                Agregar
+            </button>
+
+            <!-- The Modal -->
+            <div class="modal" id="agregar">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Agregar Eventos</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label>titulo</label>
+                                <input type="text" v-model="titulo" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Contenido:</label>
+                                <textarea class="form-control" v-model="contenido" rows="5" name="text"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha</label>
+                                <input type="date" v-model="fecha" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Contacto</label>
+                                <input type="text" v-model="contacto" class="form-control">
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>Img</label>
+                                <input type="text" v-model="img" class="form-control">
+                            </div> -->
+                            <!-- Image input-->
+                            <div class="form-group" id="imgH">
+                                <label for="comment">img:</label>
+                                <textarea class="form-control" v-model="img" id="img" rows="5"></textarea>
+                            </div>
+                            <!-- <div class="w-100 m-5 container"> -->
+                            <img id="imagen" class="w-50">
+                            <!-- </div> -->
+                            <input type="file" class="my-4" @change="getImage" accept="image/*" />
+                            <br>
+
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class=" btn btn-primary " @click="agregar" data-dismiss="modal">Agregar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ////////////////////////////////////////////////// -->
+
+            <table class="table table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Contenido</th>
+                        <th scope="col">Contacto</th>
+                        <th scope="col">fecha</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Administrar</th>
+                    </tr>
+                </thead>
+                <tbody v-for="item in eventos">
+                    <tr>
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.titulo}}</td>
+                        <td>{{item.contenido.substring(0,100)}}</td>
+                        <td>{{item.contacto}}</td>
+                        <td>{{item.fecha}}</td>
+                        <td>
+                            <div>
+                                <img v-bind:src="item.img" style="width:200px;">
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" type="button" @click="eliminar(item.id)">Eliminar</button>
+                            <button class="btn btn-success  btn-sm" type="button" @click="actualizar(item)" data-toggle="modal" data-target="#modificar">Modificar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- ///////////////////////////////////////  modal modificar /////////////////////////////////////////////////// -->
+            <!-- The Modal -->
+            <div class="modal" id="modificar">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modificar Eventos</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>titulo</label>
+                                <input type="text" v-model="items.titulo" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Contenido:</label>
+                                <textarea class="form-control" v-model="items.contenido" rows="5" name="text"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha</label>
+                                <input type="date" v-model="items.fecha" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Contacto</label>
+                                <input type="text" v-model="items.contacto" class="form-control">
+                            </div>
+                            <div class="form-group" id="imgM">
+                                <label for="comment">img:</label>
+                                <textarea class="form-control" v-model="items.img" id="img2" rows="5"></textarea>
+                            </div>
+                            <div class="w-100 m-5 container">
+                                <img id="imagenR" v-bind:src="items.img" class="w-25">
+                            </div>
+                            <input type="file" @change="getImage" accept="image/*" />
+                            <!-- <button type="button" @click="abc" class="btn btn-danger">Eliminar Imagen</button> -->
+
+                            <br>
+                            <br>
+
+                            <!-- <code>
+                                {{$data.items}} fds
+                            </code>  -->
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class=" btn btn-primary " @click="modificar(items.id)" data-dismiss="modal">Modificar</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- /////////////////////////////////////////////////// -->
+        </section>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/evento.js"></script>
+
+</body>
+
+</html>

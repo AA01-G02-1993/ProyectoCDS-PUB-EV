@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<template>
+        <div>
+            <input type="file" name="image" @change="getImage" accept="image/*">
+            <button @click="updateAvatar">Subir Imagen</button>
+        </div>
+    </template>
+    <script>
+        export default {
+    
+            data(){
+                return {
+                    imagen : null,
+                }
+            },
+            methods  : {
+                getImage(event){
+                    //Asignamos la imagen a  nuestra data
+                    this.imagen = event.target.files[0];
+                },
+                updateAvatar(){
+                    //Creamos el formData
+                    var data = new  FormData();
+                    //Añadimos la imagen seleccionada
+                    data.append('avatar', this.imagen);
+                    //Añadimos el método PUT dentro del formData
+                    // Como lo hacíamos desde un formulario simple _(no ajax)_
+                    data.append('_method', 'PUT');
+                    //Enviamos la petición
+                    axios.post('/dashboard/avatar',data)
+                    .then(response => {
+    
+                    })
+                }
+            }
+        }
+    </script>
